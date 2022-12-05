@@ -1,0 +1,49 @@
+.object{
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    position: relative;
+}
+
+.object .side{
+    height: 100%;
+}
+  
+.side > img{
+    object-fit:cover;
+    height: 100%;
+}
+  
+.control{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+}
+
+.wipeSlider span:nth-child(2){
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+  
+.wipeSlider .thumb{
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+  
+.wipeSlider .thumb:focus{
+    box-shadow: 0 0 0 6px hsla(0, 0%, 0%, 0.220);
+    /* border: none; */
+}
+  
+.wipeSlider .thumb:focus-visible{
+    /* border: 2px solid white; */
+    outline: 1px solid white;
+}

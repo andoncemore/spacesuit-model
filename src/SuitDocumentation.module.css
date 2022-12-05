@@ -1,0 +1,138 @@
+.container{
+    position: relative;
+    height: calc(100% - 50px);
+    width: 100%;
+    margin-bottom: 50px;
+    overflow:hidden;
+}
+
+.carousel {
+    display: flex;
+    height: 100%;
+    width: max-content;
+    transition: transform 500ms ease;
+}
+
+.slide{
+    height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items:center;
+    gap: 20px;
+    
+}
+
+.content{
+    margin-block: auto;
+    aspect-ratio: 1 / 1;
+    height: 75%;
+    flex-shrink: 1;
+    opacity: 0.2;
+    transition: transform 500ms ease, opacity 500ms ease;
+}
+
+.description{
+    max-width: 48ch;
+    /* background: lightgoldenrodyellow; */
+    text-align: center;
+    height: calc( 3em * 1.4 + 24px);
+    opacity: 0;
+    transition: opacity 250ms ease;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.slide.visible .description{
+    transition-delay: 0.4s;
+    opacity: 1;
+}
+
+.slide.visible .content{
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+
+.description h2{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.controls{
+    position: absolute;
+    display: flex;
+    gap: 50ch;
+    bottom: 0;
+    width: 100%;
+    /* transform: translateX(calc(-50% + 5px)); */
+    height: calc( 3em * 1.4 + 24px);
+    align-items: center;
+    justify-content:center;
+}
+
+.controls > * {
+    margin-inline: 10px;
+}
+
+.button{
+    all: unset;
+    height: 36px;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    transition: transform 0.1ms ease-in-out, color 0.1ms ease-in-out;
+    background: #F1F1F1;
+}
+
+.button:disabled,
+.button[disabled]{
+    opacity: 0.2;
+}
+
+.button svg{
+    width: 60%;
+    height: 60%;
+    color: #000000; 
+}
+
+.button:hover svg{
+    color: #6757CB;
+}
+
+.button:hover {
+    background: #EBE8FC;
+}
+
+.button:active{
+    transform: scale(0.9);
+}
+
+.button:focus{
+    box-shadow: 0 0 0 2px #8E82D9;
+    outline: none;
+}
+
+
+
+
+
+@media (max-aspect-ratio: 7 / 10){
+    .content{
+      height: unset;
+      width: 100%;
+    }
+    .slide{
+      width: 90vw;
+    }
+    .description{
+        margin-bottom: 80px;
+    }
+    .controls{
+        gap: 10px;
+        height: 80px;
+    }
+}
