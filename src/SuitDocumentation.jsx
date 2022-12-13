@@ -12,6 +12,10 @@ import suitRaw from './assets/suit_raw.png'
 import suitOptimizedMesh from './assets/suit_optimized-mesh.png'
 import suitOptimizedMesh2 from './assets/suit_optimized-mesh-2.png'
 import suitRigged from './assets/suit_rigged.png'
+import suitUVMap1 from './assets/suit_uv_mapped_01.png'
+import suitUVMap2 from './assets/suit_uv_mapped_02.png'
+import suitFinal from './assets/suit_final.png'
+
 
 import { DoubleArrowRightIcon, DoubleArrowLeftIcon } from '@radix-ui/react-icons';
 
@@ -21,9 +25,12 @@ function SuitDocumentation(){
 
     const [slidePos, setSlidePos] = useState(0);
 
-    const { nodes, materials} = useGLTF('/model.gltf');
+    // const { nodes, materials} = useGLTF('/model.gltf');
     // const [colorMap] = useTexture(['xd5bt7lc5esx.png']); 
-    const colorMap = useLoader(TextureLoader, 'xd5bt7lc5esx.png');
+    // const colorMap = useLoader(TextureLoader, 'xd5bt7lc5esx.png');
+
+    // <ModelCanvas geometry={nodes['SUIT-lowpoly005_1'].geometry} texture={colorMap} material={materials.Mat} />
+    // <ModelCanvas geometry={nodes['SUIT-lowpoly005_1'].geometry} material={materials.Mat} />
 
     let slides = [
         {
@@ -47,12 +54,12 @@ function SuitDocumentation(){
             description: "Creating a bone structure and painting vertex weights to allow the mesh to deform correctly with animation."
         },
         {
-            content: <ModelCanvas geometry={nodes['SUIT-lowpoly005_1'].geometry} texture={colorMap} material={materials.Mat} />,
+            content: <ImageSplit image1={suitUVMap1} image2={suitUVMap2} />,
             title: 'Re-UV Mapping',
             description: "Re-projecting UVs and baking textures to make indexing artworks using the UV map easier."
         },
         {
-            content: <ModelCanvas geometry={nodes['SUIT-lowpoly005_1'].geometry} material={materials.Mat} />,
+            content: <img src={suitFinal} alt="Final Suit Model." />,
             title: 'Final Suit Model',
             description: "Final model, texture, and rigging ready for use within an Interactive Experience."
         }
@@ -79,6 +86,6 @@ function SuitDocumentation(){
     )
 }
 
-useGLTF.preload("/model.gltf");
+// useGLTF.preload("/model.gltf");
 
 export default SuitDocumentation;
